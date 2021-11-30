@@ -247,6 +247,7 @@ export function createContainer(
   return createFiberRoot(containerInfo, tag, hydrate, hydrationCallbacks);
 }
 
+// 更新页面
 export function updateContainer(
   element: ReactNodeList,
   container: OpaqueRoot,
@@ -257,6 +258,9 @@ export function updateContainer(
     onScheduleRoot(container, element);
   }
   const current = container.current;
+  console.log('====================================');
+  console.log(current);
+  console.log('====================================');
   const eventTime = requestEventTime();
   if (__DEV__) {
     // $FlowExpectedError - jest isn't a global, and isn't recognized outside of tests
@@ -334,6 +338,7 @@ export {
   act,
 };
 
+// 获取根节点 真实dom
 export function getPublicRootInstance(
   container: OpaqueRoot,
 ): React$Component<any, any> | PublicInstance | null {
@@ -342,7 +347,7 @@ export function getPublicRootInstance(
     return null;
   }
   switch (containerFiber.child.tag) {
-    case HostComponent:
+    case HostComponent: // 容器组件
       return getPublicInstance(containerFiber.child.stateNode);
     default:
       return containerFiber.child.stateNode;

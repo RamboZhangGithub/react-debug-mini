@@ -1,6 +1,7 @@
 import * as ReactDOM from "react-dom";
 import * as React from "react";
 import { useState, Component } from "react";
+import ReactMemoPage from './ReactMemoPage'
 
 // // setState在合成事件中，是异步执行（批量执行）
 // // 但是在setTimeout、或者原生事件中就是同步的
@@ -58,6 +59,7 @@ export default class SetStatePage extends Component {
         </button>
 
         <button id="host">原生事件</button>
+        {count == 2 && <ReactMemoPage />}
       </div>
     );
   }

@@ -199,6 +199,7 @@ export function createLegacyRoot(
   return new ReactDOMBlockingRoot(container, LegacyRoot, options);
 }
 
+// 是否有效容器
 export function isValidContainer(node: mixed): boolean {
   return !!(
     node &&

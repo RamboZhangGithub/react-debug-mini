@@ -7,7 +7,7 @@
  * @flow
  */
 
-import ReactVersion from 'shared/ReactVersion';
+import ReactVersion from 'shared/ReactVersion'; // react版本信息
 import {
   REACT_FRAGMENT_TYPE,
   REACT_DEBUG_TRACING_MODE_TYPE,
@@ -17,9 +17,9 @@ import {
   REACT_SUSPENSE_LIST_TYPE,
   REACT_LEGACY_HIDDEN_TYPE,
   REACT_SCOPE_TYPE,
-} from 'shared/ReactSymbols';
+} from 'shared/ReactSymbols'; // ReactElement type的标记类型
 
-import {Component, PureComponent} from './ReactBaseClasses';
+import {Component, PureComponent} from './ReactBaseClasses'; 
 import {createRef} from './ReactCreateRef';
 import {forEach, map, count, toArray, only} from './ReactChildren';
 import {

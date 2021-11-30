@@ -34,8 +34,12 @@ export type Interaction = {
   ...
 };
 
-// Export all exports so that they're available in tests.
+// Export all exports so that they're available in tests. 
 // We can't use export * from in Flow for some reason.
+/**
+ * react 入口
+ * 导出 react
+ */
 export {
   Children,
   createRef,

@@ -1199,7 +1199,9 @@ export function discreteUpdates<A, B, C, D, R>(
   }
 }
 
+// 全量更新
 export function unbatchedUpdates<A, R>(fn: (a: A) => R, a: A): R {
+  // 环境？
   const prevExecutionContext = executionContext;
   executionContext &= ~BatchedContext;
   executionContext |= LegacyUnbatchedContext;

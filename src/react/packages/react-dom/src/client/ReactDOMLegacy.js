@@ -110,6 +110,7 @@ function shouldHydrateDueToLegacyHeuristic(container) {
   );
 }
 
+// 创建根容器fiber
 function legacyCreateRootFromDOMContainer(
   container: Container,
   forceHydrate: boolean,
@@ -172,6 +173,7 @@ function warnOnInvalidCallback(callback: mixed, callerName: string): void {
   }
 }
 
+// 渲染到容器 返回根fiber节点
 function legacyRenderSubtreeIntoContainer(
   parentComponent: ?React$Component<any, any>,
   children: ReactNodeList,
@@ -188,8 +190,9 @@ function legacyRenderSubtreeIntoContainer(
   // member of intersection type." Whyyyyyy.
   let root: RootType = (container._reactRootContainer: any);
   let fiberRoot;
+  // 是否已初始化
   if (!root) {
-    // Initial mount
+    // Initial mount  初始化  创建一个容器的fiber节点挂在容器_reactRootContainer属性
     root = container._reactRootContainer = legacyCreateRootFromDOMContainer(
       container,
       forceHydrate,
@@ -203,6 +206,7 @@ function legacyRenderSubtreeIntoContainer(
       };
     }
     // Initial mount should not be batched.
+    // 初始化 全量更新
     unbatchedUpdates(() => {
       updateContainer(children, fiberRoot, parentComponent, callback);
     });
@@ -215,7 +219,8 @@ function legacyRenderSubtreeIntoContainer(
         originalCallback.call(instance);
       };
     }
-    // Update
+    // Update 
+    // 更新页面
     updateContainer(children, fiberRoot, parentComponent, callback);
   }
   return getPublicRootInstance(fiberRoot);
@@ -284,9 +289,10 @@ export function hydrate(
   );
 }
 
+// 首次渲染
 export function render(
-  element: React$Element<any>,
-  container: Container,
+  element: React$Element<any>, // 虚拟dom
+  container: Container, // 容器
   callback: ?Function,
 ) {
   invariant(
